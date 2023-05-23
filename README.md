@@ -10,12 +10,12 @@ Le capteur ultrason **HC-SR04** est un capteur qui est équiper d'un émetteur e
 
 Le capteur **HC-SR04** possède **4 broches Vcc, GND, Trig et Echo** :
 
+![Pinout_HC-SR04](https://github.com/J3R5/Arduino_ultrason_HC_SR04/blob/main/datasheet/pinout%20HC-SR04.png)
 
-
-* Vcc  :
-* GND  :
-* Trig :
-* Echo :
+* Vcc  : **Alimentation** du capteur en **+5V**.
+* GND  : **Masse** du capteur **0V**.
+* Trig : **Entrée du capteur** qui permet **d'activer le capteur** pour prendre **une mesure** en envoyant **une impulsion** de **10µs**.
+* Echo : **Sortie du capteur** qui envoie **une impulsion** de la largeur qui **varie** en fonction de **la distance** entre le capteur et **le signal**.
 
 
 
