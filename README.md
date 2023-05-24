@@ -17,5 +17,13 @@ Le capteur **HC-SR04** possède **4 broches Vcc, GND, Trig et Echo** :
 * Trig : **Entrée du capteur** qui permet **d'activer le capteur** pour prendre **une mesure** en envoyant **une impulsion** de **10µs**.
 * Echo : **Sortie du capteur** qui envoie **une impulsion** de la largeur qui **varie** en fonction de **la distance** entre le capteur et **le signal**.
 
+#### Fonctionnement capteur
+
+**Schéma** fonctionnement du capteur :
+
+![logigramme_us](https://github.com/J3R5/Arduino_ultrason_HC_SR04/blob/main/datasheet/logigramme_us.PNG)
+
+
+
 
 
