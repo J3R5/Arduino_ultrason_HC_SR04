@@ -23,6 +23,12 @@ Le capteur **HC-SR04** possède **4 broches Vcc, GND, Trig et Echo** :
 
 ![logigramme_us](https://github.com/J3R5/Arduino_ultrason_HC_SR04/blob/main/datasheet/logigramme_us.PNG)
 
+Le capteur fonctionne de la façon suivant :
+
+On envoie une première impulsion de 10 microseconde sur la borne trig.
+Ensuite une salve de 8 pulsation est envoyé via l'emetteur du module ultrason.
+Enfin le module va envoyer un signal via la sortie Echo du capteur dont la durée depend de la distance entre le capteur et l'objet.
+
 
 
 
