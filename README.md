@@ -29,7 +29,7 @@ Le capteur fonctionne de la façon suivant :
 * Ensuite une salve de 8 pulsation est envoyé via l'emetteur du module ultrason.
 * Enfin le module va envoyer un signal via la sortie Echo du capteur dont la durée depend de la distance entre le capteur et l'objet.
 
+Donc pour obtenir la distance il suffit de traiter l'information venant du echo.
 
-
-
+Ceci est la fin de se markdown. Pour allez voir comment utilisé le capteur US il faut allez voir se [markdown]() il va aussi expliquer comment traiter l'information du capteur US.
 
