@@ -8,4 +8,34 @@ Ce markdown va expliquer ligne par ligne le fonctionnement du programme du capte
 
 Ce programme permet de tester si le capteur ultrasons marche en renvoyant la distance dans le moniteur série. Pour vérifier il suffit juste de mesurer la distance entre l'objet et le capteur.
 
+##### Define : 
+
+On commence par des Define pour définir l'entrée et sortie Trig et Echo de la carte.
+
+~~~C++
+//------------Define------------//
+#define pinTrig 11 //Pin broche trig
+#define pinEcho 12 //Pin broche echo
+//-----------------------------//
+
+~~~
+
+Dans cette exemple la broche trig est connectée à la 11 quant a Echo elle est connecté à la 12. Si l'on change les borche il suffit uniquement de les changer dans le define et le programme fera le reste.
+
+##### Variable :
+
+Le programme possède deux variables une pour le temps de réponse du capteur ultrasons et une autre pour calculer la distance entre l'objet et la capteur.
+
+~~~C++
+
+//-----------Variable-----------//
+long temps;//cette variable gère le temps de l'allé retour du capteur ultrason
+float distance;//c'est variable sert a calculer la distance du capteur detecter par le capteur ultrason.
+//-----------------------------//
+
+~~~
+
+Ici temps est la variable du temps de réponse et distance est la variable distance.
+
+
 
