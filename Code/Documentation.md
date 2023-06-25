@@ -37,5 +37,32 @@ float distance;//c'est variable sert a calculer la distance du capteur detecter 
 
 Ici temps est la variable du temps de réponse et distance est la variable distance.
 
+##### Void Setup :
 
+Après avoir déclarer les variables et les defines on peut passer au Void Setup pour initialiser les entrées, sorties et le moniteur série.
 
+~~~C++
+
+void setup() {
+
+  //-----------Initialisation-----------//
+  Serial.begin(9600);
+  //activation du moniteur série à 9600 bauds
+  //-----------------------------------//
+
+  //-----------Entrée/Sortie------------//
+  pinMode(pinTrig, OUTPUT);
+  pinMode(pinEcho, INPUT);
+  //-----------------------------------//
+  
+  //--------Initialisation-Sortie------//
+  digitalWrite(pinTrig, LOW); 
+  //-----------------------------------//
+
+}
+
+~~~
+
+Dans cette fonction on commence par activer le moniteur série à 9600 bauds. Ensuite on déclare Trig en sortie et Echo en entrée. Après on désactive la sortie Trig pour eviter d'activer le capteur.
+
+##### Void loop :
