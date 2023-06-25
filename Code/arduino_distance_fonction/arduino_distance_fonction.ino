@@ -66,7 +66,7 @@ int CapteurUS()
   //récupération valeur
   temps = pulseIn(pinEcho, HIGH);    
 
-  //---------Affichage Résulatat--------//
+  //-------------- Calcul -------------//
   if (temps > 30000)//valeur du timeout donc echec de la mesure 
   {              
     distance = -1;//affichage erreur de mesure
