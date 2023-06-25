@@ -2,11 +2,11 @@
 
 #### Introduction
 
-Ce markdown va expliquer ligne par ligne le fonctionnement du programme du capteur ultrason. Pour savoir comment fonctionne se capteur il faut allez voir [se markdown](). Il y a deux programmes dans le dossiers code l'un permet de vérifier que le capteur ultrasons marche, quant as l'autre c'est une fonction qui se sert du capteur. Le document va présenter le premier programme puis expliquer les différences avec la fonction.
+  Ce markdown va expliquer ligne par ligne le fonctionnement du programme du capteur ultrason. Pour savoir comment fonctionne se capteur il faut allez voir [se markdown](). Il y a deux programmes dans le dossiers code l'un permet de vérifier que le capteur ultrasons marche, quant as l'autre c'est une fonction qui se sert du capteur. Le document va présenter le premier programme puis expliquer les différences avec la fonction.
 
 #### Programme test Capteur HC-SR04
 
-Ce programme permet de tester si le capteur ultrasons marche en renvoyant la distance dans le moniteur série. Pour vérifier il suffit juste de mesurer la distance entre l'objet et le capteur.
+  Ce programme permet de tester si le capteur ultrasons marche en renvoyant la distance dans le moniteur série. Pour vérifier il suffit juste de mesurer la distance entre l'objet et le capteur.
 
 ##### Define : 
 
@@ -20,7 +20,7 @@ On commence par des Define pour définir l'entrée et sortie Trig et Echo de la 
 
 ~~~
 
-Dans cette exemple la broche trig est connectée à la 11 quant a Echo elle est connecté à la 12. Si l'on change les borche il suffit uniquement de les changer dans le define et le programme fera le reste.
+  Dans cette exemple la broche trig est connectée à la 11 quant a Echo elle est connecté à la 12. Si l'on change les borche il suffit uniquement de les changer dans le define et le programme fera le reste.
 
 ##### Variable :
 
@@ -63,7 +63,7 @@ void setup() {
 
 ~~~
 
-Dans cette fonction on commence par activer le moniteur série à 9600 bauds. Ensuite on déclare Trig en sortie et Echo en entrée. Après on désactive la sortie Trig pour eviter d'activer le capteur.
+  Dans cette fonction on commence par activer le moniteur série à 9600 bauds. Ensuite on déclare Trig en sortie et Echo en entrée. Après on désactive la sortie Trig pour eviter d'activer le capteur.
 
 ##### Void loop :
 
@@ -89,7 +89,7 @@ void loop() {
   //récupération valeur
   temps = pulseIn(pinEcho, HIGH);    
 
-  //---------Affichage Résulatat--------//
+
   if (temps > 30000)//valeur du timeout donc echec de la mesure 
   {              
     Serial.println("Echec de la mesure");//affichage erreur de mesure
@@ -101,12 +101,13 @@ void loop() {
     //multiplication par 340 car vitesse du son en m/s division par 10000
     //pour avoir des cm .0 sert à avoir des nombres après la virgule.
     distance = (temps*340)/10000.0;
-    //affichage                  
+  //---------Affichage Résultat--------//                
     Serial.print("Distance: ");
     Serial.print(distance);
     Serial.println(" cm");
+   //-----------------------------------//
   }
-  //-----------------------------------//
+ 
 
   //Attente avant nouveau cycle
   delay(2000);
@@ -114,7 +115,7 @@ void loop() {
 
 ~~~
 
-On commence par activer le capteur pour obtenir une distance pour cela on passe brievement la borne trig a l'état haut pendant 10 micro-seconde. Ensuite on attend compte le temps a l'état du pin Echo car dans la datasheet le temps a l'état haut est proportionnel à la distance. Si le temps est suppérieur à 30 000 on considère que l'objet est trop loin donc la mesure a échouer.
+  On commence par activer le capteur pour obtenir une distance pour cela on passe brievement la borne trig a l'état haut pendant 10 micro-seconde. Ensuite on attend compte le temps a l'état du pin Echo car dans la datasheet le temps a l'état haut est proportionnel à la distance. Si le temps est suppérieur à 30 000 on considère que l'objet est trop loin donc la mesure a échouer.
 
 Ensuite on divise le résultat par deux car la distance compte l'allez et le retour.
 
@@ -122,8 +123,16 @@ Pour avoir la distance on connais le temps et la vitesse du son dans l'air (340m
 
 On peut utiliser cette formule : 
 
-$\v=d/t
+~~~math
 
+v= d/t → d = v×t
 
+~~~
+  Pour trouver la distance on fait le temps × 340 puis on divise par 10000.0 pour avoir le résultat en cm. Le .0 dans le 10000.0 permet d'avoir un nombre a virgule pour être plus précis dans les mesures.
 
+  Pour avoir des mesure il faut un système pour mesurer la température dans la zone de mesure. Car le 340 m/s est valable que pour 20°C si il faut plus chaud ou plus froid la vitesse du son sera plus ou moins grande que 340 m/s donc la formule utiliser est une aproximation.
+
+La suite du code est l'affichage du résulat obtenue via le calcul dans le moniteur série. Chaque résulatat sera affiché sur une ligne différente.
+
+  Après on attend 2 secondes avant de reprendre une nouvelle mesure. Il est important de noter que le temps peut être réduit mais il faut un temps minimum entre la prise de deux mesures sinon elle seront fausser. Le temps minimum est le retour a l'état bas de la borne Trig car le capteur aura finit sa mlesure.
 
