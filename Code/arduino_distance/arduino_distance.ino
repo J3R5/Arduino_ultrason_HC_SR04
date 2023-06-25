@@ -48,7 +48,7 @@ void loop() {
   //récupération valeur
   temps = pulseIn(pinEcho, HIGH);    
 
-  //---------Affichage Résulatat--------//
+  
   if (temps > 30000)//valeur du timeout donc echec de la mesure 
   {              
     Serial.println("Echec de la mesure");//affichage erreur de mesure
@@ -60,7 +60,7 @@ void loop() {
     //multiplication par 340 car vitesse du son en m/s division par 10000
     //pour avoir des cm .0 sert à avoir des nombres après la virgule.
     distance = (temps*340)/10000.0;
-    //affichage                  
+//----------Affichage Résultat---------//
     Serial.print("Distance: ");
     Serial.print(distance);
     Serial.println(" cm");
