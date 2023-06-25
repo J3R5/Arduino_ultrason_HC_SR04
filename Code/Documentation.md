@@ -66,3 +66,64 @@ void setup() {
 Dans cette fonction on commence par activer le moniteur série à 9600 bauds. Ensuite on déclare Trig en sortie et Echo en entrée. Après on désactive la sortie Trig pour eviter d'activer le capteur.
 
 ##### Void loop :
+
+Le programme dans le Void loop va activer le capteur puis récuperer sa valeur pour la convertir en distance et enfin l'afficher dans le moniteur série.
+
+~~~C++
+
+void loop() {
+
+  /*
+   * Ce programme est un programme qui grace un capteur
+   * ultrason de déterminer la distance (ici en cm)
+   *
+   * Jérémy Clémente 16/05/2023
+  */
+
+  //---------Activation Capteur---------//
+  digitalWrite(pinTrig, HIGH);        
+  delayMicroseconds(10);
+  digitalWrite(pinTrig, LOW);
+  //-----------------------------------//
+
+  //récupération valeur
+  temps = pulseIn(pinEcho, HIGH);    
+
+  //---------Affichage Résulatat--------//
+  if (temps > 30000)//valeur du timeout donc echec de la mesure 
+  {              
+    Serial.println("Echec de la mesure");//affichage erreur de mesure
+  }
+  else
+  {
+    //division par 2 pour aller et retour
+    temps = temps/2;
+    //multiplication par 340 car vitesse du son en m/s division par 10000
+    //pour avoir des cm .0 sert à avoir des nombres après la virgule.
+    distance = (temps*340)/10000.0;
+    //affichage                  
+    Serial.print("Distance: ");
+    Serial.print(distance);
+    Serial.println(" cm");
+  }
+  //-----------------------------------//
+
+  //Attente avant nouveau cycle
+  delay(2000);
+}
+
+~~~
+
+On commence par activer le capteur pour obtenir une distance pour cela on passe brievement la borne trig a l'état haut pendant 10 micro-seconde. Ensuite on attend compte le temps a l'état du pin Echo car dans la datasheet le temps a l'état haut est proportionnel à la distance. Si le temps est suppérieur à 30 000 on considère que l'objet est trop loin donc la mesure a échouer.
+
+Ensuite on divise le résultat par deux car la distance compte l'allez et le retour.
+
+Pour avoir la distance on connais le temps et la vitesse du son dans l'air (340m/s pour 20°C)
+
+On peut utiliser cette formule : 
+
+$\v=d/t
+
+
+
+
