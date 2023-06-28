@@ -241,3 +241,7 @@ int CapteurUS()
 
 Dans le programme il existe une petite différence contrairement à l'autre programme. Dans ce programme l'on affiche la valeur retourner par la fonction cpateur US, Mais si la mesure est un échec le fonction retournera -1. La raison du choix de -1 comme valeur d'échec est que une distance ne peut pas être négative on ne peux pas avoir une distance négative entre deux objets. Sinon si la valeur estcorrecte la distance sera la même que le programme précédent.
 
+##### Conclusion : 
+
+Voici la conclusion du markdown sur les programmes US du HC-SR04 je vous conseille d'allez vous le markdown du [cablage]() et le [pdf]() résumant l'ensemble
+
