@@ -2,7 +2,7 @@
 
 ### Introduction
 
-Ce repertoir **va traiter du fonctionnement** du capteur **HC-SR04**. Ce document va traiter du Capteur **HC-SR04** ([ici sa datasheet](https://github.com/J3R5/Arduino_ultrason_HC_SR04/blob/main/datasheet/HC-SR04.PDF)) et de son fonctionnement. Pour voir **le code du programme** test il faut aller voir [se markdown]().  
+Ce repertoir **va traiter du fonctionnement** du capteur **HC-SR04**. Ce document va traiter du Capteur **HC-SR04** ([ici sa datasheet](https://github.com/J3R5/Arduino_ultrason_HC_SR04/blob/main/datasheet/HC-SR04.PDF)) et de son fonctionnement. Pour voir **le code du programme** test il faut aller voir [se markdown](https://github.com/J3R5/Arduino_ultrason_HC_SR04/blob/main/documentation/Documentation.md).  
 
 Le capteur ultrason **HC-SR04** est un capteur qui est équiper d'un émetteur et d'un recepteur à ultrason. Pour utilisée le capteur on va lui envoyer un signal sur une broche et la distance sera retourner sous forme de durée à l'état haut.
 
