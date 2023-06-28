@@ -139,5 +139,7 @@ La suite du code est l'affichage du résulat obtenue via le calcul dans le monit
 
 ##### Fonction capteur US
 
-Il
+Il est défois plus pratique d'avoir une fonction qui se sert du cpateur ultrason que de l'inclure dans le programme principale
+
+
 
