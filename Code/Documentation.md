@@ -137,9 +137,107 @@ La suite du code est l'affichage du résulat obtenue via le calcul dans le monit
 
   Après on attend 2 secondes avant de reprendre une nouvelle mesure. Il est important de noter que le temps peut être réduit mais il faut un temps minimum entre la prise de deux mesures sinon elle seront fausser. Le temps minimum est le retour a l'état bas de la borne Trig car le capteur aura finit sa mesure et l'on pourras en commmencer une nouvelle.
 
-##### Fonction capteur US
+##### Fonction capteur US :
 
-Il est défois plus pratique d'avoir une fonction qui se sert du cpateur ultrason que de l'inclure dans le programme principale
+Il est défois plus pratique d'avoir une fonction qui se sert du capteur ultrason que de l'inclure dans le programme principale, cela permet de ne pas le surcharger. Le code suivant reprend le même principe que le code précédent en enlevant le code de la void loop et en la mettant dans une fonction.
+
+code avec la fonction:
+
+~~~C++
+
+//------------Define------------//
+#define pinTrig 11 //Pin broche trig
+#define pinEcho 12 //Pin broche echo
+//-----------------------------//
+
+//-----------Variable-----------//
+int distance_capteur;
+//-----------------------------//
+
+void setup() {
+
+  //-----------Initialisation-----------//
+  Serial.begin(9600);
+  //activation du moniteur série à 9600 bauds
+  //-----------------------------------//
+
+  //-----------Entrée/Sortie------------//
+  pinMode(pinTrig, OUTPUT);
+  pinMode(pinEcho, INPUT);
+  //-----------------------------------//
+  
+  //--------Initialisation-Sortie------//
+  digitalWrite(pinTrig, LOW); 
+  //-----------------------------------//
+
+}
 
 
+
+void loop() {
+
+  distance_capteur = CapteurUS();
+
+  Serial.println(distance_capteur);
+
+  //Attente avant nouveau cycle
+  delay(2000);
+}
+
+int CapteurUS()
+{
+  /*
+   * Cette fonction sert a déterminer la distance
+   * d'un objet grace a un capteur ultrason (ici en mm)
+   * si la mesure est fausse on retoune -1
+   *
+   * Jérémy Clémente 16/05/2023
+  */
+
+  //-----------Variable-----------//
+  long temps;//cette variable gère le temps de l'allé retour du capteur ultrason
+  float distance;//c'est variable sert a calculer la distance du capteur detecter par le capteur ultrason.
+  //-----------------------------//
+
+  //-----------Initialisation-----------//
+  temps = 0;
+  distance = 0;//on impose les variables à zéro
+  //-----------------------------------//
+
+  //Début
+
+  //---------Activation Capteur---------//
+  digitalWrite(pinTrig, HIGH);        
+  delayMicroseconds(10);
+  digitalWrite(pinTrig, LOW);
+  //-----------------------------------//
+
+  //récupération valeur
+  temps = pulseIn(pinEcho, HIGH);    
+
+  //------------- Résulatat ------------//
+  if (temps > 30000)//valeur du timeout donc echec de la mesure 
+  {              
+    distance = -1;//affichage erreur de mesure
+  }
+  else
+  {
+    //division par 2 pour aller et retour
+    temps = temps/2;
+    //multiplication par 340 car vitesse du son en m/s division par 10000
+    //pour avoir des cm .0 sert à avoir des nombres après la virgule.
+    distance = (temps*340)/10000.0;               
+  }
+  //-----------------------------------//
+
+  //On retourne la valeur
+  return distance;
+
+  //Fin
+
+}
+
+~~~
+
+Dans le programme il existe une petite différence contrairement à l'autre programme. Dans ce programme l'on affiche la valeur retourner par la fonction cpateur US, Mais si la mesure est un échec le fonction retournera -1. La raison du choix de -1 comme valeur d'échec est que une distance ne peut pas être négative on ne peux pas avoir une distance négative entre deux objets. Sinon si la valeur estcorrecte la distance sera la même que le programme précédent.
 
