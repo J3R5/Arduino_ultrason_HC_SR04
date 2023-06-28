@@ -128,11 +128,16 @@ On peut utiliser cette formule :
 v= d/t → d = v×t
 
 ~~~
+
   Pour trouver la distance on fait le temps × 340 puis on divise par 10000.0 pour avoir le résultat en cm. Le .0 dans le 10000.0 permet d'avoir un nombre a virgule pour être plus précis dans les mesures.
 
   Pour avoir des mesure il faut un système pour mesurer la température dans la zone de mesure. Car le 340 m/s est valable que pour 20°C si il faut plus chaud ou plus froid la vitesse du son sera plus ou moins grande que 340 m/s donc la formule utiliser est une aproximation.
 
 La suite du code est l'affichage du résulat obtenue via le calcul dans le moniteur série. Chaque résulatat sera affiché sur une ligne différente.
 
-  Après on attend 2 secondes avant de reprendre une nouvelle mesure. Il est important de noter que le temps peut être réduit mais il faut un temps minimum entre la prise de deux mesures sinon elle seront fausser. Le temps minimum est le retour a l'état bas de la borne Trig car le capteur aura finit sa mlesure.
+  Après on attend 2 secondes avant de reprendre une nouvelle mesure. Il est important de noter que le temps peut être réduit mais il faut un temps minimum entre la prise de deux mesures sinon elle seront fausser. Le temps minimum est le retour a l'état bas de la borne Trig car le capteur aura finit sa mesure et l'on pourras en commmencer une nouvelle.
+
+##### Fonction capteur US
+
+Il
 
