@@ -4,7 +4,7 @@
 //-----------------------------//
 
 //-----------Variable-----------//
-int distance_capteur
+int distance_capteur;
 //-----------------------------//
 
 void setup() {
@@ -31,6 +31,8 @@ void loop() {
 
   distance_capteur = CapteurUS();
 
+  Serial.println(distance_capteur);
+
   //Attente avant nouveau cycle
   delay(2000);
 }
@@ -52,7 +54,7 @@ int CapteurUS()
 
   //-----------Initialisation-----------//
   temps = 0;
-  distance = 0;//on impose les variable à zéro
+  distance = 0;//on impose les variables à zéro
   //-----------------------------------//
 
   //Début
@@ -66,7 +68,7 @@ int CapteurUS()
   //récupération valeur
   temps = pulseIn(pinEcho, HIGH);    
 
-  //-------------- Calcul -------------//
+  //------------- Résulatat ------------//
   if (temps > 30000)//valeur du timeout donc echec de la mesure 
   {              
     distance = -1;//affichage erreur de mesure
@@ -87,11 +89,6 @@ int CapteurUS()
   //Fin
 
 }
-
-
-
-
-
 
 
 
