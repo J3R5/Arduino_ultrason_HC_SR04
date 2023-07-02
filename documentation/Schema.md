@@ -10,5 +10,16 @@
 
   ~~~C++
 
+//------------Define------------//
+#define pinTrig 11 //Pin broche trig
+#define pinEcho 12 //Pin broche echo
+//-----------------------------//
+
 
   ~~~
+
+Pour changer le schéma de connection des broches il suffit seulement le numéro de pinTrig et pinEcho en fonction du pin où l'on branche. Le reste du code se fait en fonction de pinTrig et de pinEcho et n'est pas directement lier à un numéro.
+
+##### Epilogue :
+
+Voici la fin sur ce court rapport montrant le schéma de connection entre le capteur US et l'arduino. Voici le markdown sur le [Code](https://github.com/J3R5/Arduino_ultrason_HC_SR04/blob/main/documentation/Documentation.md) du capteur ultrason et ici le pdf résumant [l'ensemble]().
