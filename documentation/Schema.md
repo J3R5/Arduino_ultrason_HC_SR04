@@ -5,3 +5,10 @@
   ##### Schéma :
 
   ![Schema](https://github.com/J3R5/Arduino_ultrason_HC_SR04/blob/main/datasheet/Schema_US.png)
+
+  Le schéma respecte la logique du code. En plus du Pin trig et Echo il y a les broches Vcc (+5V) et gnd (0V) à relier a la carte arduino. Les Pins Echo et trig peuvent être changer dans le code en modifiant seulement ces deux lignes de code :
+
+  ~~~C++
+
+
+  ~~~
