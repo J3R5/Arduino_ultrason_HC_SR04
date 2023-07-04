@@ -4,8 +4,8 @@
 //-----------------------------//
 
 //-----------Variable-----------//
-long temps;//cette variable gère le temps de l'allé retour du capteur ultrason
-float distance;//c'est variable sert a calculer la distance du capteur detecter par le capteur ultrason.
+long temps;//cette variable gère le temps de l'aller-retour du capteur ultrason
+float distance;//cette variable sert à calculer la distance du capteur détecter par le capteur ultrason.
 //-----------------------------//
 
 
@@ -34,7 +34,7 @@ void loop() {
 
   /*
    * Ce programme est un programme qui grace un capteur
-   * ultrason de déterminer la distance (ici en cm)
+   * ultrason détermine la distance (ici en cm)
    *
    * Jérémy Clémente 16/05/2023
   */
