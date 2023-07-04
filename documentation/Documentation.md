@@ -115,11 +115,11 @@ void loop() {
 
 ~~~
 
-  On commence par activer le capteur pour obtenir une distance pour cela on passe brievement la borne trig a l'état haut pendant 10 micro-seconde. Ensuite on attend compte le temps a l'état du pin Echo car dans la datasheet le temps a l'état haut est proportionnel à la distance. Si le temps est suppérieur à 30 000 on considère que l'objet est trop loin donc la mesure a échouer.
+  On commence par activer le capteur pour obtenir une distance, pour cela on passe brievement la borne trig à l'état haut pendant 10 micro-seconde. Ensuite, on compte le temps à l'état du pin Echo car dans la datasheet le temps à l'état haut est proportionnel à la distance. Si le temps est supérieur à 30 000, on considère que l'objet est trop loin, donc la mesure a échoué.
 
-Ensuite on divise le résultat par deux car la distance compte l'allez et le retour.
+Ensuite, on divise le résultat par deux car la distance compte l'aller et le retour.
 
-Pour avoir la distance on connais le temps et la vitesse du son dans l'air (340m/s pour 20°C)
+Pour avoir la distance, on connait le temps et la vitesse du son dans l'air (340m/s pour 20°C)
 
 On peut utiliser cette formule : 
 
@@ -129,17 +129,17 @@ v= d/t → d = v×t
 
 ~~~
 
-  Pour trouver la distance on fait le temps × 340 puis on divise par 10000.0 pour avoir le résultat en cm. Le .0 dans le 10000.0 permet d'avoir un nombre a virgule pour être plus précis dans les mesures.
+  Pour trouver la distance, on fait le temps × 340, puis on divise par 10000.0 pour avoir le résultat en cm. Le .0 dans le 10000.0 permet d'avoir un nombre à virgule pour être plus précis dans les mesures.
 
-  Pour avoir des mesure il faut un système pour mesurer la température dans la zone de mesure. Car le 340 m/s est valable que pour 20°C si il faut plus chaud ou plus froid la vitesse du son sera plus ou moins grande que 340 m/s donc la formule utiliser est une aproximation.
+  Pour avoir des mesures plus fiables, il faut un système pour connaître la température dans le champ d'action du capteur. Car le 340 m/s est valable que pour 20°C, s'il faut plus chaud ou plus froid, la vitesse du son sera plus ou moins grande que 340 m/s, donc la formule utilisée est une aproximation.
 
-La suite du code est l'affichage du résulat obtenue via le calcul dans le moniteur série. Chaque résulatat sera affiché sur une ligne différente.
+La suite du code est l'affichage du résulat obtenu via le calcul dans le moniteur série. Chaque résultat sera affiché sur une ligne différente.
 
-  Après on attend 2 secondes avant de reprendre une nouvelle mesure. Il est important de noter que le temps peut être réduit mais il faut un temps minimum entre la prise de deux mesures sinon elle seront fausser. Le temps minimum est le retour a l'état bas de la borne Trig car le capteur aura finit sa mesure et l'on pourras en commmencer une nouvelle.
+  Après, on attend 2 secondes avant de reprendre une nouvelle mesure. Il est important de noter que le temps peut être réduit, mais il faut un temps minimum entre la prise de deux mesures sinon elles seront faussées. Le temps minimum est le retour à l'état bas de la borne Trig car le capteur aura fini sa mesure et l'on pourra en commmencer une nouvelle.
 
 ##### Fonction capteur US :
 
-Il est défois plus pratique d'avoir une fonction qui se sert du capteur ultrason que de l'inclure dans le programme principale, cela permet de ne pas le surcharger. Le code suivant reprend le même principe que le code précédent en enlevant le code de la void loop et en la mettant dans une fonction.
+Il est plus pratique d'avoir une fonction qui se sert du capteur ultrason que de l'inclure dans le programme principal, cela permet de ne pas le surcharger. Le code suivant reprend le même principe que le code précédent en enlevant le code de la void loop et en la mettant dans une fonction.
 
 code avec la fonction:
 
@@ -187,16 +187,16 @@ void loop() {
 int CapteurUS()
 {
   /*
-   * Cette fonction sert a déterminer la distance
-   * d'un objet grace a un capteur ultrason (ici en mm)
+   * Cette fonction sert à déterminer la distance
+   * d'un objet grâce à un capteur ultrason (ici en mm)
    * si la mesure est fausse on retoune -1
    *
    * Jérémy Clémente 16/05/2023
   */
 
   //-----------Variable-----------//
-  long temps;//cette variable gère le temps de l'allé retour du capteur ultrason
-  float distance;//c'est variable sert a calculer la distance du capteur detecter par le capteur ultrason.
+  long temps;//cette variable gère le temps de l'aller retour du capteur ultrason
+  float distance;//c'est variable sert à calculer la distance du capteur détecté par le capteur ultrason.
   //-----------------------------//
 
   //-----------Initialisation-----------//
@@ -216,7 +216,7 @@ int CapteurUS()
   temps = pulseIn(pinEcho, HIGH);    
 
   //------------- Résulatat ------------//
-  if (temps > 30000)//valeur du timeout donc echec de la mesure 
+  if (temps > 30000)//valeur du timeout donc échec de la mesure 
   {              
     distance = -1;//affichage erreur de mesure
   }
@@ -239,9 +239,9 @@ int CapteurUS()
 
 ~~~
 
-Dans le programme il existe une petite différence contrairement à l'autre programme. Dans ce programme l'on affiche la valeur retourner par la fonction cpateur US, Mais si la mesure est un échec le fonction retournera -1. La raison du choix de -1 comme valeur d'échec est que une distance ne peut pas être négative on ne peux pas avoir une distance négative entre deux objets. Sinon si la valeur estcorrecte la distance sera la même que le programme précédent.
+Dans ce programme, il existe une petite différence contrairement à l'autre programme. Dans ce code, on affiche la valeur retournée par la fonction capteur US, Mais si la mesure est un échec, la fonction retournera -1. La raison du choix de -1 comme valeur d'échec est qu'une distance ne peut pas être négative, on ne peut pas avoir une distance négative entre deux objets. Sinon, si la valeur est correcte la distance sera la même que le programme précédent.
 
 ##### Conclusion : 
 
-Voici la conclusion du markdown sur les programmes US du HC-SR04 je vous conseille d'allez vous le markdown du [cablage](https://github.com/J3R5/Arduino_ultrason_HC_SR04/blob/main/documentation/Schema.md) et le [pdf]() résumant l'ensemble
+Voici la conclusion du markdown sur les programmes US du HC-SR04 je vous conseille de consulter le markdown du [cablage](https://github.com/J3R5/Arduino_ultrason_HC_SR04/blob/main/documentation/Schema.md) et le [pdf]() résumant l'ensemble.
 
