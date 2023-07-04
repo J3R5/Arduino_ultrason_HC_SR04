@@ -2,15 +2,15 @@
 
 #### Introduction
 
-  Ce markdown va expliquer ligne par ligne le fonctionnement du programme du capteur ultrason. Pour savoir comment fonctionne se capteur il faut allez voir [se markdown](). Il y a deux programmes dans le dossiers code l'un permet de vérifier que le capteur ultrasons marche, quant as l'autre c'est une fonction qui se sert du capteur. Le document va présenter le premier programme puis expliquer les différences avec la fonction.
+  Ce markdown va expliquer ligne par ligne le fonctionnement du programme du capteur ultrason. Pour savoir comment fonctionne ce capteur, il faut consulter [ce markdown](). Il y a deux programmes dans le dossier code, l'un permet de vérifier que le capteur ultrasons marche, quant à l'autre, c'est une fonction qui utilise le capteur. Le document va présenter le premier programme puis expliquer les différences avec la fonction.
 
 #### Programme test Capteur HC-SR04
 
-  Ce programme permet de tester si le capteur ultrasons marche en renvoyant la distance dans le moniteur série. Pour vérifier il suffit juste de mesurer la distance entre l'objet et le capteur.
+  Ce programme permet de tester si le capteur ultrasons fonctionne en renvoyant la distance dans le moniteur série. Pour vérifier, il suffit juste de mesurer la distance entre l'objet et le capteur.
 
 ##### Define : 
 
-On commence par des Define pour définir l'entrée et sortie Trig et Echo de la carte.
+On commence par des Defines pour définir l'entrée et la sortie Trig et Echo de la carte.
 
 ~~~C++
 //------------Define------------//
@@ -20,26 +20,26 @@ On commence par des Define pour définir l'entrée et sortie Trig et Echo de la 
 
 ~~~
 
-  Dans cette exemple la broche trig est connectée à la 11 quant a Echo elle est connecté à la 12. Si l'on change les borche il suffit uniquement de les changer dans le define et le programme fera le reste.
+  Dans cette exemple, la broche trig est connectée à la 11, quant à Echo, elle est connectée à la 12. Si l'on change les broches, il suffit uniquement de les changer dans le define et le programme fera le reste.
 
 ##### Variable :
 
-Le programme possède deux variables une pour le temps de réponse du capteur ultrasons et une autre pour calculer la distance entre l'objet et la capteur.
+Le programme possède deux variables, une pour le temps de réponse du capteur ultrasons et une autre pour calculer la distance entre l'objet et le capteur.
 
 ~~~C++
 
 //-----------Variable-----------//
-long temps;//cette variable gère le temps de l'allé retour du capteur ultrason
-float distance;//c'est variable sert a calculer la distance du capteur detecter par le capteur ultrason.
+long temps;//cette variable gère le temps de l'aller-retour du capteur ultrason
+float distance;//cette variable sert à calculer la distance du capteur détecté par le capteur ultrason.
 //-----------------------------//
 
 ~~~
 
-Ici temps est la variable du temps de réponse et distance est la variable distance.
+Ici "temps" est la variable du temps de réponse et "distance" est la variable de la distance.
 
 ##### Void Setup :
 
-Après avoir déclarer les variables et les defines on peut passer au Void Setup pour initialiser les entrées, sorties et le moniteur série.
+Après avoir déclaré les variables et les defines, on peut passer au Void Setup pour initialiser les entrées, sorties et le moniteur série.
 
 ~~~C++
 
@@ -63,7 +63,7 @@ void setup() {
 
 ~~~
 
-  Dans cette fonction on commence par activer le moniteur série à 9600 bauds. Ensuite on déclare Trig en sortie et Echo en entrée. Après on désactive la sortie Trig pour eviter d'activer le capteur.
+  Dans cette fonction, on commence par activer le moniteur série à 9600 bauds. Ensuite, on déclare Trig en sortie et Echo en entrée. Après, on met la sortie Trig à 0 V pour éviter d'activer le capteur.
 
 ##### Void loop :
 
@@ -74,8 +74,8 @@ Le programme dans le Void loop va activer le capteur puis récuperer sa valeur p
 void loop() {
 
   /*
-   * Ce programme est un programme qui grace un capteur
-   * ultrason de déterminer la distance (ici en cm)
+   * Ce programme est un programme qui grâce un capteur
+   * ultrason permet de déterminer la distance (ici en cm)
    *
    * Jérémy Clémente 16/05/2023
   */
@@ -90,7 +90,7 @@ void loop() {
   temps = pulseIn(pinEcho, HIGH);    
 
 
-  if (temps > 30000)//valeur du timeout donc echec de la mesure 
+  if (temps > 30000)//valeur du timeout donc échec de la mesure 
   {              
     Serial.println("Echec de la mesure");//affichage erreur de mesure
   }
