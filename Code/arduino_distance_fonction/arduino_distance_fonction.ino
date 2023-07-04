@@ -40,16 +40,16 @@ void loop() {
 int CapteurUS()
 {
   /*
-   * Cette fonction sert a déterminer la distance
-   * d'un objet grace a un capteur ultrason (ici en mm)
+   * Cette fonction sert à déterminer la distance
+   * d'un objet grâce à un capteur ultrason (ici en cm)
    * si la mesure est fausse on retoune -1
    *
    * Jérémy Clémente 16/05/2023
   */
 
   //-----------Variable-----------//
-  long temps;//cette variable gère le temps de l'allé retour du capteur ultrason
-  float distance;//c'est variable sert a calculer la distance du capteur detecter par le capteur ultrason.
+  long temps;//cette variable gère le temps de l'aller-retour du capteur ultrason
+  float distance;//cette variable sert à calculer la distance du capteur detecter par le capteur ultrason.
   //-----------------------------//
 
   //-----------Initialisation-----------//
@@ -69,7 +69,7 @@ int CapteurUS()
   temps = pulseIn(pinEcho, HIGH);    
 
   //------------- Résultat ------------//
-  if (temps > 30000)//valeur du timeout donc echec de la mesure 
+  if (temps > 30000)//valeur du timeout donc échec de la mesure 
   {              
     distance = -1;//affichage erreur de mesure
   }
